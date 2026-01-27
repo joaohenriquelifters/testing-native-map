@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
 const mapStyle = [
     { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
@@ -87,6 +87,8 @@ export default function MapaScreen() {
     return (
         <View style={styles.container}>
             <MapView
+                provider={PROVIDER_GOOGLE}
+                mapType="none"ffg
                 style={styles.map}
                 initialRegion={{
                     latitude: -7.2347,
