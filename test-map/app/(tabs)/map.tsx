@@ -88,7 +88,7 @@ export default function MapaScreen() {
         <View style={styles.container}>
             <MapView
                 provider={PROVIDER_GOOGLE}
-                mapType="none"ffg
+                mapType="none"
                 style={styles.map}
                 initialRegion={{
                     latitude: -7.2347,
