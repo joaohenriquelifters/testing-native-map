@@ -21,13 +21,13 @@ const mapStyle = [
     {
         featureType: "poi",
         elementType: "labels.text.fill",
-        stylers: [{ color: "#1DB954" }], // verde Spotify
+        stylers: [{ color: "#1DB954" }],
     },
 
     {
         featureType: "poi.park",
         elementType: "geometry",
-        stylers: [{ color: "#1DB95433" }], 
+        stylers: [{ color: "#1DB95433" }],
     },
     {
         featureType: "poi.park",
@@ -155,7 +155,7 @@ export default function MapaScreen() {
                 onRegionChange={checkInternalBoundary}
             >
                 <Overlay
-                    image={require("../../assets/images/map_overlay.jpg")}
+                    image={require("../assets/images/map_overlay.jpg")}
                     bounds={[
                         [boundary.sw.latitude, boundary.sw.longitude],
                         [boundary.ne.latitude, boundary.ne.longitude]
@@ -179,4 +179,4 @@ const styles = StyleSheet.create({
         width: Dimensions.get("window").width,
         height: Dimensions.get("window").height,
     },
-}); 
+});
