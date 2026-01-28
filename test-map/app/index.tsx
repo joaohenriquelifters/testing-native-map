@@ -100,6 +100,9 @@ const boundary = {
     ne: { latitude: CENTER_LAT + DELTA_LAT, longitude: CENTER_LON + DELTA_LON },
 };
 
+import CategoryBar from "../components/CategoryBar";
+import BottomNav from "../components/BottomNav";
+
 export default function MapaScreen() {
     const mapRef = React.useRef<MapView>(null);
 
@@ -128,53 +131,61 @@ export default function MapaScreen() {
 
     return (
         <View style={styles.container}>
-            <MapView
-                ref={mapRef}
-                provider={PROVIDER_GOOGLE}
-                mapType="none"
-                style={styles.map}
-                initialRegion={{
-                    latitude: CENTER_LAT,
-                    longitude: CENTER_LON,
-                    latitudeDelta: 0.005,
-                    longitudeDelta: 0.005,
-                }}
-                minZoomLevel={16}
-                maxZoomLevel={22}
-                scrollEnabled={true}
-                pitchEnabled={false}
-                rotateEnabled={false}
-                customMapStyle={mapStyle}
-                // @ts-ignore
-                cameraBoundary={{
-                    latLngBounds: {
-                        northEast: boundary.ne,
-                        southWest: boundary.sw,
-                    },
-                }}
-                onRegionChange={checkInternalBoundary}
-            >
-                <Overlay
-                    image={require("../assets/images/map_overlay.jpg")}
-                    bounds={[
-                        [boundary.sw.latitude, boundary.sw.longitude],
-                        [boundary.ne.latitude, boundary.ne.longitude]
-                    ]}
-                    opacity={1}
-                />
+            <CategoryBar />
 
-                <Marker
-                    coordinate={{ latitude: CENTER_LAT, longitude: CENTER_LON }}
-                    title="Entrada do Parque"
-                    description="Comece sua aventura aqui"
-                />
-            </MapView>
+            <View style={styles.mapContainer}>
+                <MapView
+                    ref={mapRef}
+                    provider={PROVIDER_GOOGLE}
+                    mapType="none"
+                    style={styles.map}
+                    initialRegion={{
+                        latitude: CENTER_LAT,
+                        longitude: CENTER_LON,
+                        latitudeDelta: 0.005,
+                        longitudeDelta: 0.005,
+                    }}
+                    minZoomLevel={16}
+                    maxZoomLevel={22}
+                    scrollEnabled={true}
+                    pitchEnabled={false}
+                    rotateEnabled={false}
+                    customMapStyle={mapStyle}
+                    // @ts-ignore
+                    cameraBoundary={{
+                        latLngBounds: {
+                            northEast: boundary.ne,
+                            southWest: boundary.sw,
+                        },
+                    }}
+                    onRegionChange={checkInternalBoundary}
+                >
+                    <Overlay
+                        image={require("../assets/images/map_overlay.jpg")}
+                        bounds={[
+                            [boundary.sw.latitude, boundary.sw.longitude],
+                            [boundary.ne.latitude, boundary.ne.longitude]
+                        ]}
+                        opacity={1}
+                    />
+                    <Marker
+                        coordinate={{ latitude: CENTER_LAT, longitude: CENTER_LON }}
+                        title="Entrada do Parque"
+                        description="Comece sua aventura aqui"
+                    />
+                </MapView>
+            </View>
+
+            <BottomNav />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1 },
+    container: { flex: 1, backgroundColor: '#fff' },
+    mapContainer: {
+        flex: 1,
+    },
     map: {
         width: Dimensions.get("window").width,
         height: Dimensions.get("window").height,
