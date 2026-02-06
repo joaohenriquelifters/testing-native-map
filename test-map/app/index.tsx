@@ -2,94 +2,6 @@ import React from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE, Overlay } from "react-native-maps";
 
-const mapStyle = [
-    { elementType: "geometry", stylers: [{ color: "#121212" }] },
-    { elementType: "labels.text.stroke", stylers: [{ color: "#121212" }] },
-    { elementType: "labels.text.fill", stylers: [{ color: "#B3B3B3" }] },
-
-    {
-        featureType: "administrative.locality",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#FFFFFF" }],
-    },
-
-    {
-        featureType: "poi",
-        elementType: "geometry",
-        stylers: [{ color: "#181818" }],
-    },
-    {
-        featureType: "poi",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#1DB954" }],
-    },
-
-    {
-        featureType: "poi.park",
-        elementType: "geometry",
-        stylers: [{ color: "#1DB95433" }],
-    },
-    {
-        featureType: "poi.park",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#1DB954" }],
-    },
-
-    {
-        featureType: "road",
-        elementType: "geometry",
-        stylers: [{ color: "#282828" }],
-    },
-    {
-        featureType: "road",
-        elementType: "geometry.stroke",
-        stylers: [{ color: "#1DB954" }],
-    },
-    {
-        featureType: "road",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#B3B3B3" }],
-    },
-
-    {
-        featureType: "road.highway",
-        elementType: "geometry",
-        stylers: [{ color: "#1DB954" }],
-    },
-    {
-        featureType: "road.highway",
-        elementType: "geometry.stroke",
-        stylers: [{ color: "#FFFFFF" }],
-    },
-    {
-        featureType: "road.highway",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#121212" }],
-    },
-
-    {
-        featureType: "water",
-        elementType: "geometry",
-        stylers: [{ color: "#181818" }],
-    },
-    {
-        featureType: "water",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#1DB954" }],
-    },
-
-    {
-        featureType: "transit",
-        elementType: "geometry",
-        stylers: [{ color: "#282828" }],
-    },
-    {
-        featureType: "transit.station",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#1DB954" }],
-    },
-];
-
 const CENTER_LAT = -7.2347;
 const CENTER_LON = -35.9154;
 const DELTA_LAT = 0.00898;
@@ -150,7 +62,6 @@ export default function MapaScreen() {
                     scrollEnabled={true}
                     pitchEnabled={false}
                     rotateEnabled={false}
-                    customMapStyle={mapStyle}
                     // @ts-ignore
                     cameraBoundary={{
                         latLngBounds: {
